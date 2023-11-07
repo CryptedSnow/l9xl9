@@ -1,64 +1,110 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://travis-ci.org/laravel/framework">
+        <img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+    </a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### About the project <h3> 
+The application in question is a CRUD (Create, Read, Update and Delete) of Hunter x Hunter anime.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Setting the environment
 
-## Learning Laravel
+1 - Run the following command to install dependencies of repository.
+```
+composer install
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2 - Create `.env` file using the command:
+```
+cp .env.example .env
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3 - Run the following command to generate `API_KEY` value of `.env` file.
+```
+php artisan key:generate
+```
 
-## Laravel Sponsors
+4 - When executing the migrations, is necessary use the commands to create some populated tables to some selection fields at forms.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+php artisan migrate --seed
+```
 
-### Premium Partners
+Or using the commands:
+```
+php artisan migrate
+php artisan db:seed
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Functionalities <h3>
+Functionality | Status
+------------ | -------------
+Read Hunter | Working
+Listing Hunters in main page | Working
+Update Hunter | Working
+Send Hunter to trash | Working
+Form validations | Working
+Filter Hunter (main and trash listing) | Working
+Alerts of doned actions (Using [SweetAlert2](https://sweetalert2.github.io/)) | Working
+Export datas to PDF | Working
+Download of zipped photos of the Hunter (main and trash listing) | Working
+Fallback route | Working
+Listing erased Hunters in trash page | Working
+Restore erased Hunter of trash page | Working
+Delete permanently Hunter of trash page | Working
+Send emails (using [Mailtrap](https://mailtrap.io/)) | Working
+Send messages of WhatsApp (using [Twilio](https://www.twilio.com/docs/usage/api)) | Working
+Logs of doned tasks (using [LogViewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md)) | Working
 
-## Contributing
+<h1 align="center"> Listing Hunters </h1>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Listagem.png?raw=true)
+  
+<h1 align="center"> Register Hunter </h1>
 
-## Code of Conduct
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Cadastro.png?raw=true)
+ 
+<h1 align="center"> Update Hunter </h1>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Atualizacao.png?raw=true)
 
-## Security Vulnerabilities
+<h1 align="center"> Trash of Hunters </h1>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Trashed.png?raw=true)
 
-## License
+<h1 align="center"> Fallback (Replacing 404 Not Found) </h1>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Fallback.png?raw=true)
+
+<h1 align="center"> Sended email </h1>
+
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Email.png?raw=true)
+
+<h1 align="center"> WhatsApp chat </h1>
+
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Whatsapp.png?raw=true)
+
+<h1 align="center"> Logs </h1>
+
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Log1.png?raw=true)
+
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Log2.png?raw=true)
+
+![](https://github.com/Iury189/l9xl9/blob/main/public/imagens/Log3.png?raw=true)

@@ -13,17 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hunter', function (Blueprint $table) {
+        Schema::create('hunters', function (Blueprint $table) {
             $table->id();
             $table->string('nome_hunter', 50);
+            $table->string('email_hunter', 50);
             $table->integer('idade_hunter');
             $table->decimal('altura_hunter', 3,2);
             $table->decimal('peso_hunter', 5,2);
-            $table->string('tipo_hunter', 30);
-            $table->string('tipo_nen', 30);
+            $table->string('tipo_hunter', 50);
+            $table->string('tipo_nen', 50);
             $table->string('tipo_sangue', 3);
-            $table->timestamp('data_cadastro')->useCurrent();
-            $table->timestamp('data_atualizacao')->useCurrent()->useCurrentOnUpdate();
+            $table->string('serial', 10)->unique();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

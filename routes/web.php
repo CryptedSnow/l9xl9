@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controller\HunterController;
-namespace App\Http\Controller\MasterController;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HunterController;
+use App\Http\Controllers\FallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +15,24 @@ use App\Http\Controllers\HunterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::resource("/hunter", HunterController::class);
-
-Route::controller(HunterController::class)->group(function () {
+Route::controller(HunterController::class)->group(function() {
     Route::get('/', 'index');
     Route::get('/create', 'create');
+    Route::get('/trash', 'trashRegister');
+    Route::get('/show/{id}', 'show');
     Route::get('/update/{id}', 'edit');
-    // Undefined variable $hunter
-    Route::post('create', 'store');
-    // The PATCH method is not supported for this route. Supported methods: GET, HEAD, POST.
+    Route::get('/restore-register/{id}', 'restoreRegisterTrash');
+    Route::post('/create', 'store');
     Route::patch('/update/{id}', 'update');
-    // The GET method is not supported for this route. Supported methods: DELETE.
-    Route::delete('/delete/{id}', 'destroy'); 
+    Route::delete('/delete/{id}', 'destroy');
+    Route::delete('/delete-register/{id}', 'destroyRegisterTrash');
+    Route::get('/export-pdf','exportPDF');
+    Route::get('/download-zip/{id}', 'downloadZip');
+    Route::get('/download-zip-trashed/{id}', 'downloadZipRegisterTrash');
 });
+
+Route::fallback(FallbackController::class);
