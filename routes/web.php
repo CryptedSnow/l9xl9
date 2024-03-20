@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HunterController;
-use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\{HunterController,FallbackController};
 
 /*
 |--------------------------------------------------------------------------

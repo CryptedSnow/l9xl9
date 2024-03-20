@@ -41,8 +41,8 @@
                                 <tr>
                                     <td title="{{ $hxh->id }}">{{ $hxh->id }}</td>
                                     <td>
-                                        @foreach ($hxh->avatarHunter as $avatar)
-                                            <img src="{{ asset($avatar->imagem) }}" height="100" width="100" style="margin: 5px">
+                                        @foreach ($hxh->avatarHunter as $a)
+                                            <img src="{{ asset($a->imagem) }}" height="100" width="100" style="margin: 5px">
                                         @endforeach
                                     </td>
                                     <td title="{{ $hxh->nome_hunter }}">{{ $hxh->nome_hunter }}</td>
@@ -57,9 +57,9 @@
                                     <td title="{{ $hxh->updated_at == $hxh->created_at ? 'Sem atualização' : \Carbon\Carbon::parse($hxh->updated_at)->format('d/m/Y H:i:s')}}">
                                     {{ $hxh->updated_at == $hxh->created_at ? 'Sem atualização' : \Carbon\Carbon::parse($hxh->updated_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>
-                                        <form action="{{ url("delete/".encrypt($hxh->id)) }}" method="POST">
-                                            <a href="{{ url("download-zip/".encrypt($hxh->id)) }}" class="btn btn-warning" title="Donwload imagem(ns) de {{ $hxh->nome_hunter }}"><i class="fa fa-file-zipper"></i>&nbsp;Download</a>
-                                            <a href="{{ url("update/".encrypt($hxh->id)) }}" class="btn btn-primary" title="Atualizar {{ $hxh->nome_hunter }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
+                                        <form action="{{ url("delete/$hxh->id") }}" method="POST">
+                                            <a href="{{ url("download-zip/$hxh->id") }}" class="btn btn-warning" title="Donwload imagem(ns) de {{ $hxh->nome_hunter }}"><i class="fa fa-file-zipper"></i>&nbsp;Download</a>
+                                            <a href="{{ url("update/$hxh->id") }}" class="btn btn-primary" title="Atualizar {{ $hxh->nome_hunter }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
                                             {{ ' ' }} {{ method_field('DELETE') }} {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger" title="Deletar {{ $hxh->nome_hunter }}"><i class="fa fa-trash"></i>&nbsp;Lixeira</button>
                                         </form>

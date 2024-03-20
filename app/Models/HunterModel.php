@@ -25,6 +25,7 @@ class HunterModel extends Model
         'serial',
     ];
 
+
     public function avatarHunter()
     {
         return $this->hasMany(AvatarHunterModel::class, 'hunter_id');

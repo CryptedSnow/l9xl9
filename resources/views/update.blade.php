@@ -14,7 +14,7 @@
                 <br>
                 <div class="card-body">
                     <!-- Form -->
-                    <form action="{{ url("update/".encrypt($hunter->id)) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url("update/$hunter->id") }}" method="POST" enctype="multipart/form-data">
                         {{ method_field('PATCH') }} {{ csrf_field() }}
                         <div class="form_group">
                             <div class="form_group">
@@ -123,8 +123,8 @@
                             <div class="form_group">
                                 <div for="imagem_hunter">Imagem:
                                     <input type="file" class="form-control @error('imagem_hunter.*') is-invalid @enderror" name="imagem_hunter[]" multiple>
-                                    @foreach (explode(',', $hunter->imagem_hunter) as $imagens)
-                                        <img src="{{ asset($imagens) }}" height=100 width=100>
+                                    @foreach ($hunter->avatarHunter as $avatar)
+                                        <img src="{{ asset($avatar->imagem) }}" height="100" width="100" style="margin: 5px">
                                     @endforeach
                                     @error('imagem_hunter.*')
                                         <span class="invalid-feedback" role="alert">

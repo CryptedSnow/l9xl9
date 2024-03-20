@@ -20,8 +20,6 @@
 
 @yield('content')
 
-@include('sweetalert::alert')
-
 <!-- Footer -->
 <footer class="container">
     <div class="row">

@@ -27,7 +27,6 @@
                     <td title="{{ $hxh->tipo_nen }}">{{ $hxh->tipo_nen }}</td>
                     <td title="{{ $hxh->tipo_sangue }}">{{ $hxh->tipo_sangue }}</td>
                     <td title="{{ $hxh->serial }}">{{ $hxh->serial }}</td>
-                    {{-- <td> {{ json_encode($hxh->propriedades, JSON_UNESCAPED_UNICODE) }}</td> --}}
                     <td title="{{ \Carbon\Carbon::parse($hxh->created_at)->format('d/m/Y H:i:s')}}">{{ \Carbon\Carbon::parse($hxh->created_at)->format('d/m/Y H:i:s')}}</td>
                     <td title="{{ $hxh->updated_at == $hxh->created_at ? 'Sem atualização' : \Carbon\Carbon::parse($hxh->updated_at)->format('d/m/Y H:i:s')}}">
                     {{ $hxh->updated_at == $hxh->created_at ? 'Sem atualização' : \Carbon\Carbon::parse($hxh->updated_at)->format('d/m/Y H:i:s')}}</td>

@@ -38,8 +38,12 @@
                                 <tr>
                                     <td title="{{ $hxh->id }}">{{ $hxh->id }}</td>
                                     <td>
-                                        @foreach (explode(',', $hxh->imagem_hunter) as $imagem)
-                                            <img src="{{ asset('trashed/'.$imagem) }}" height=100 width=100 style="margin: 5px">
+                                        @foreach ($hxh->avatarHunter as $a)
+                                            @if (file_exists(storage_path("app/trash/avatars/{$a->id}/{$a->imagem}")))
+                                                <img src="{{ asset("storage/trash/avatars/{$a->id}/{$a->imagem}") }}" height="100" width="100" style="margin: 5px">
+                                            @else
+                                                <p>Image not found</p>
+                                            @endif
                                         @endforeach
                                     </td>
                                     <td title="{{ $hxh->nome_hunter }}">{{ $hxh->nome_hunter }}</td>
@@ -50,12 +54,11 @@
                                     <td title="{{ $hxh->tipo_nen }}">{{ $hxh->tipo_nen }}</td>
                                     <td title="{{ $hxh->tipo_sangue }}">{{ $hxh->tipo_sangue }}</td>
                                     <td title="{{ $hxh->serial }}">{{ $hxh->serial }}</td>
-                                    {{-- <td> {{ json_encode($hxh->propriedades, JSON_UNESCAPED_UNICODE) }}</td> --}}
                                     <td title="{{ \Carbon\Carbon::parse($hxh->deleted_at)->format('d/m/Y H:i:s')}}">{{ \Carbon\Carbon::parse($hxh->deleted_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>
-                                        <form action="{{ url("delete-register/".encrypt($hxh->id)) }}" method="POST">
-                                            <a href="{{ url("download-zip-trashed/".encrypt($hxh->id)) }}" class="btn btn-warning" title="Donwload imagem(ns) de {{ $hxh->nome_hunter }}"><i class="fa fa-file-zipper"></i>&nbsp;Download</a>
-                                            <a href="{{ url("restore-register/".encrypt($hxh->id)) }}" class="btn btn-primary" title="Restaurar {{ $hxh->nome_hunter }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Restaurar</a>
+                                        <form action="{{ url("delete-register/$hxh->id") }}" method="POST">
+                                            <a href="{{ url("download-zip-trashed/$hxh->id") }}" class="btn btn-warning" title="Donwload imagem(ns) de {{ $hxh->nome_hunter }}"><i class="fa fa-file-zipper"></i>&nbsp;Download</a>
+                                            <a href="{{ url("restore-register/$hxh->id") }}" class="btn btn-primary" title="Restaurar {{ $hxh->nome_hunter }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Restaurar</a>
                                             {{ ' ' }} {{ method_field('DELETE') }} {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger" title="Deletar {{ $hxh->nome_hunter }}"><i class="fa fa-trash"></i>&nbsp;Deletar</button>
                                         </form>
